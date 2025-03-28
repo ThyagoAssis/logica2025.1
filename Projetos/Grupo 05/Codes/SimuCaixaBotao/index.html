@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title> Simulador de Caixa Eletrônico </title>
+ 
+    <style> /* tag para utilizar o CSS */ body{
+        background-color: rgb(197, 193, 193);
+    }  
+    </style>
+ 
+</head>
+ 
+<body>
+     
+    <h1> BEM-VINDO AO CAIXA ELETRÔNICO </h1>
+    <h2 id="saldoTexto"> <span id="saldo"> </span> </h2>
+   
+    <style>
+        button {
+            font-size: 20px; /*Aumenta o tamanho da fonte*/
+            padding: 15px 30px; /*Aumenta o espaço dentro do botão*/            
+        }
+    </style>
+ 
+    <button style="background-color: rgb(243, 152, 119);" onclick="depositar()"> Depositar </button>
+    <button style=" background-color: rgb(241, 241, 123);" onclick="sacar()"> Sacar </button>
+    <button style="background-color: rgb(114, 200, 215);" onclick="verHistorico()"> Mostrar Histórico </button>
+    <button style="background-color: rgb(245, 93, 93);" onclick="fecharSistema()"> Sair </button>
+   
+ 
+ 
+    <script src="simuCaixaBotao.js">  </script>
+ 
+</body>
+</html>
+ 
+ 
+ 

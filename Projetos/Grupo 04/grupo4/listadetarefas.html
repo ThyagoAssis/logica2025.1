@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <!-- Titulo da Pagina -->
+    <h1>Lista de Tarefas</h1>
+    <!-- Criando os botoes -->
+    <button onclick="adicionar()"button style="background-color: green; color: white;">Adicionar</button>
+    <button onclick="remover()"button style="background-color: red; color: white;">Remover</button>
+    <!-- organizar uma tarefa embaixo da outra -->
+    <ul id="lista"></ul>
+    <script>
+      /* Criando o array */
+      let listaDeTarefas = []
+      /* Criando variavel tarefa */
+      let tarefa
+      
+      /* Criando a funcao adicionar e chamando o prompt */
+      function adicionar() {
+        tarefa = prompt('Quais são as missões de hoje?')
+        while (tarefa.trim() === '' || tarefa === null) {
+        tarefa = prompt('Quais são as missões de hoje?');
+
+        // Se o usuário cancelar ou deixar o campo vazio, avisa e repete a solicitação
+        if (tarefa === null) {
+            alert('Operação cancelada');
+            return; // Caso o usuário cancele, não faz nada e sai da função
+        } else if (tarefa.trim() === '') {
+            alert('Por favor, insira uma tarefa válida!');
+        }
+        }
+    /*Criamos duas novas variáveis com as tarefas e a lista maiúsculas para comparar de maneira mais precisa */
+        let tarefaMaiuscula = tarefa.trim().toUpperCase()
+        let listaMaiuscula = listaDeTarefas.map( tarefa => tarefa.toUpperCase())
+
+        if (listaMaiuscula.includes(tarefaMaiuscula)) {
+        // Se já existir, exibe um alerta e não adiciona
+          alert('Essa tarefa já está na lista!');
+        } else {
+        /* Inserindo a tarefa na lista */
+
+          listaDeTarefas.push(tarefa)
+
+         let listaDeTarefasAtualizada = ''
+
+        /* Incrementando o array com tarefas */
+
+          for (controle = 0; controle < listaDeTarefas.length; controle++) {
+            listaDeTarefasAtualizada +=
+          /* Criando o checkbox */
+             '<li><input type="checkbox"/>' + listaDeTarefas[controle] + '</li>'
+         }
+        /* Mostrando a lista */
+
+          document.getElementById('lista').innerHTML = listaDeTarefasAtualizada
+        }}
+      /* A mesma coisa pra remover */
+      function remover() {
+        /* Criando variavel tarefaRemovida */
+        let tarefaRemovida = prompt('O que deseja remover?')
+        /* Se a lista de tarefa nao incluir tarefa removida alerta  */
+        if(!listaDeTarefas.includes(tarefaRemovida)){
+          alert("Essa tarefa não está na lista para poder ser removida.")
+          return
+        }
+        else{
+        listaDeTarefas = listaDeTarefas.filter(
+          /* Filtrando tarefa removida */
+          (tarefa) => tarefa !== tarefaRemovida
+        )                /* Aplicando ! para negativar a função */
+
+        let listaDeTarefasAtualizada = ''
+
+        for (controle = 0; controle < listaDeTarefas.length; controle++) {
+          listaDeTarefasAtualizada +=
+            '<li><input type="checkbox"/>' + listaDeTarefas[controle] + '</li>'
+        }
+        document.getElementById('lista').innerHTML = listaDeTarefasAtualizada
+        } 
+      }
+    </script>
+  </body>
+</html>
